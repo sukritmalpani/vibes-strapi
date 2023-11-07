@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "favourite_songs",
+  "info": {
+    "singularName": "favourite-song",
+    "pluralName": "favourite-songs",
+    "displayName": "FavouriteSong"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "userId": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "songId": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::song.song"
+    }
+  }
+}
