@@ -661,6 +661,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     >;
     userId: Attribute.UID;
     profilePicture: Attribute.Media;
+    playlists: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToMany',
+      'api::playlist.playlist'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -881,6 +886,7 @@ export interface ApiHistoryHistory extends Schema.CollectionType {
     singularName: 'history';
     pluralName: 'histories';
     displayName: 'History';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -896,7 +902,8 @@ export interface ApiHistoryHistory extends Schema.CollectionType {
       'oneToOne',
       'api::song.song'
     >;
-    timestamp: Attribute.Time;
+    timestamp: Attribute.DateTime &
+      Attribute.DefaultTo<'2023-11-22T18:30:00.000Z'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -929,9 +936,9 @@ export interface ApiPlaylistPlaylist extends Schema.CollectionType {
   attributes: {
     playlistId: Attribute.UID;
     playlistName: Attribute.String;
-    user: Attribute.Relation<
+    usernames: Attribute.Relation<
       'api::playlist.playlist',
-      'oneToOne',
+      'manyToMany',
       'plugin::users-permissions.user'
     >;
     songs: Attribute.Relation<
@@ -990,6 +997,7 @@ export interface ApiSongSong extends Schema.CollectionType {
       'manyToMany',
       'api::artist.artist'
     >;
+    img_src: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

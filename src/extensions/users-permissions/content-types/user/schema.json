@@ -77,6 +77,12 @@
       ],
       "type": "media",
       "multiple": true
+    },
+    "playlists": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::playlist.playlist",
+      "mappedBy": "usernames"
     }
   }
 }

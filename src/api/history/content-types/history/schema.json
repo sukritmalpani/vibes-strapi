@@ -4,7 +4,8 @@
   "info": {
     "singularName": "history",
     "pluralName": "histories",
-    "displayName": "History"
+    "displayName": "History",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,7 +23,8 @@
       "target": "api::song.song"
     },
     "timestamp": {
-      "type": "time"
+      "type": "datetime",
+      "default": "2023-11-22T18:30:00.000Z"
     }
   }
 }

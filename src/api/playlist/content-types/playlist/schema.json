@@ -18,10 +18,11 @@
     "playlistName": {
       "type": "string"
     },
-    "user": {
+    "usernames": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "playlists"
     },
     "songs": {
       "type": "relation",
